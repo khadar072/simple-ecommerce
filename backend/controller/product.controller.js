@@ -58,16 +58,19 @@ export const updateSingleProduct = async (req, res) => {
             return res.send({ success: true, message:"this product is not exist" })
         }
 
-        if (!name || !price || !file) {
-            return res.send({ success: true, message:" data is missing" })     
-        }
-        const updatData= {
-            name,
-            price,
-            image:file.filename
-        }
+  // Build update data dynamically
+    const updateData = {};
 
-        const updatedData = await productModal.findByIdAndUpdate(id,updatData,{new :true})
+    if (name) updateData.name = name;
+    if (price) updateData.price = price;
+    if (file) updateData.image = file.filename;
+
+    // If no fields sent to update
+    if (Object.keys(updateData).length === 0) {
+      return res.send({ success: false, message: "No data to update" });
+    }
+
+        const updatedData = await productModal.findByIdAndUpdate(id,updateData,{new :true})
         return res.send({ success: true, message:"updated successfullt",updatedData })
 
     } catch (error) {
