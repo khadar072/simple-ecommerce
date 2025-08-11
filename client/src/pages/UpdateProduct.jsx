@@ -13,7 +13,7 @@ const UpdateProduct = () => {
 
   const getProduct = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/product/api/get-single-product/${id}`)
+      const res = await axios.get(`https://simple-ecommerce-i7qy.onrender.com/product/api/get-single-product/${id}`)
       if (res.data.success) {
         setProduct(res.data.product)
         setName(res.data.product.name);
@@ -38,7 +38,7 @@ const UpdateProduct = () => {
       formData.append('image', image);
 
       const product = await axios.put(
-        `http://localhost:5000/product/api/update-single-product/${id}`,
+        `https://simple-ecommerce-i7qy.onrender.com/product/api/update-single-product/${id}`,
         formData,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       );

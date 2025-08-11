@@ -9,7 +9,7 @@ const Homepage = () => {
 
     const getProduct = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/product/api/get-product')
+            const res = await axios.get('https://simple-ecommerce-i7qy.onrender.com/product/api/get-product')
             if (res.data.success) {
                 setProduct(res.data.product)
             }
@@ -24,7 +24,7 @@ const Homepage = () => {
 
     const deleteProduct = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/product/api/delete-single-product/${id}`);
+            await axios.delete(`https://simple-ecommerce-i7qy.onrender.com/product/api/delete-single-product/${id}`);
             // Refresh products list after deletion
             getProduct();
         } catch (error) {
@@ -48,7 +48,7 @@ const Homepage = () => {
                                     <div key={index} className='border bg-black h-auto cursor-pointer rounded-2xl shadow p-4'>
                                         <div className='w-full h-[200px] overflow-hidden'>
                                             <img
-                                                src={`http://localhost:5000/upload/${item.image}`}
+                                                src={`https://simple-ecommerce-i7qy.onrender.com/upload/${item.image}`}
                                                 alt={item.name}
                                                 className="w-full h-full rounded-2xl object-cover"
                                             />

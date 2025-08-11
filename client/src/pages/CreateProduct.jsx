@@ -17,7 +17,7 @@ const CreateProduct = () => {
       formData.append('image', image);
 
       const product = await axios.post(
-        'http://localhost:5000/product/api/add-product',
+        'https://simple-ecommerce-i7qy.onrender.com/product/api/add-product',
         formData,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       );
